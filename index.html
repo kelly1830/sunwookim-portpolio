@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japan Business & Marketing Portfolio</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --white: #ffffff;
+      --text: #09090b;
+      --muted: #52525b;
+      --subtle: #71717a;
+      --line: #e4e4e7;
+      --line-dark: #d4d4d8;
+      --black: #09090b;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(100% - 48px, 1280px);
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--black);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav a {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--muted);
+    }
+    .nav a:hover { color: var(--text); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .04;
+      background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-inner {
+      position: relative;
+      padding: 96px 0 108px;
+      animation: fadeUp .7s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .chip {
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 750;
+      color: #3f3f46;
+      background: #fff;
+    }
+    .chip.dark {
+      background: var(--black);
+      color: #fff;
+      border-color: var(--black);
+    }
+    .hero h1 {
+      max-width: 1000px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.16;
+      letter-spacing: -0.055em;
+      font-weight: 780;
+    }
+    .hero p {
+      max-width: 800px;
+      margin: 32px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    section { padding: 82px 0; }
+    .section-white {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .section-title { margin-bottom: 40px; }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--subtle);
+      font-size: 12px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 42px);
+      letter-spacing: -0.04em;
+      line-height: 1.25;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .quote-card {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      border-color: var(--line-dark);
+      background: #fafafa;
+      box-shadow: none;
+      padding: 40px;
+      overflow: hidden;
+    }
+    .quote-mark {
+      position: absolute;
+      font-family: Georgia, serif;
+      font-size: 84px;
+      color: #e4e4e7;
+      line-height: 1;
+    }
+    .quote-mark.left { left: 24px; top: 16px; }
+    .quote-mark.right { right: 24px; bottom: -8px; }
+    .quote-card p {
+      position: relative;
+      margin: 0;
+      color: var(--muted);
+      line-height: 2;
+    }
+    .context-card {
+      height: fit-content;
+      border-color: var(--line-dark);
+      box-shadow: none;
+      padding: 20px;
+    }
+    .context-card .label {
+      margin: 0 0 20px;
+      color: #a1a1aa;
+      font-size: 11px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+    }
+    .context-list { display: grid; gap: 16px; font-size: 13px; color: #3f3f46; }
+    .context-list small {
+      display: block;
+      margin-bottom: 4px;
+      color: #a1a1aa;
+      font-size: 12px;
+      letter-spacing: .2em;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .skill-card { padding: 18px; }
+    .icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--black);
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 750;
+    }
+    .skill-card h3, .workflow-item h3, .insight-card h3 { margin: 0; font-size: 15px; }
+    .skill-card p, .insight-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .metric-list { display: grid; gap: 0; }
+    .metric {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .metric:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 8px; }
+    .metric strong {
+      display: block;
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .metric h3 { margin: 10px 0 0; font-size: 18px; line-height: 1.35; }
+    .metric p {
+      margin: 0;
+      padding-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .insight-card {
+      border-color: var(--line-dark);
+      background: #fafafa;
+      min-height: 260px;
+    }
+    .insight-card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .insight-card li { margin-bottom: 8px; }
+
+    .project-list { display: grid; gap: 20px; }
+    .project-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+    }
+    .project-no {
+      font-size: 52px;
+      font-weight: 780;
+      line-height: 1;
+      letter-spacing: -0.07em;
+    }
+    .project-label {
+      margin-top: 10px;
+      color: var(--subtle);
+      font-size: 12px;
+      letter-spacing: .2em;
+    }
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .project-head h3 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+      line-height: 1.3;
+    }
+    .company {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--subtle);
+      font-weight: 550;
+      letter-spacing: .02em;
+    }
+    .badge {
+      flex: 0 0 auto;
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      padding: 5px 16px;
+      color: #3f3f46;
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .project-cols {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .project-cols h4 {
+      margin: 0 0 8px;
+      color: var(--subtle);
+      font-size: 12px;
+      letter-spacing: .2em;
+    }
+    .project-cols p {
+      margin: 0;
+      color: #3f3f46;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .contribution {
+      border-top: 1px solid var(--line-dark);
+      background: #fafafa;
+      padding: 96px 0;
+    }
+    .contribution h2 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.2;
+      letter-spacing: -0.05em;
+    }
+    .short-line {
+      width: 96px;
+      height: 1px;
+      background: var(--black);
+      margin: 32px 0;
+    }
+    .contribution p.body {
+      max-width: 1080px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      background: rgba(244,244,245,.6);
+      text-align: center;
+      padding: 56px 0;
+    }
+    .footer strong {
+      display: block;
+      font-size: 13px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .footer p {
+      margin: 12px 0 0;
+      color: var(--subtle);
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .container { width: min(100% - 32px, 1280px); }
+      .nav { display: none; }
+      .hero-inner { padding: 72px 0 84px; }
+      .intro-grid, .experience-grid { grid-template-columns: 1fr; }
+      .skill-grid, .insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metric { grid-template-columns: 150px 1fr; gap: 24px; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-cols { grid-template-columns: 1fr; }
+      .project-head { flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      section { padding: 64px 0; }
+      .brand { font-size: 17px; }
+      .skill-grid, .insight-grid { grid-template-columns: 1fr; }
+      .quote-card { padding: 32px 24px; }
+      .metric { grid-template-columns: 1fr; gap: 12px; }
+      .project-no { font-size: 44px; }
+      .hero p, .contribution p.body { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="brand"><span class="dot"></span><span>SUNWOO KIM • Portfolio</span></a>
+      <nav class="nav">
+        <a href="#strength">Capability</a>
+        <a href="#experience">Experience</a>
+        <a href="#insight">Market Insight</a>
+        <a href="#projects">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="chips">
+          <span class="chip dark">Marketing & Operations</span>
+          <span class="chip">Japan Market</span>
+          <span class="chip">Consumer Insight</span>
+        </div>
+        <h1>일본 시장의 고객 경험과 데이터를 연결하여,<br />성장 기회를 발견하는 지원자<br />김선우입니다.</h1>
+        <p>일본 현지 근무 경험과 데이터 기반 문제 해결 역량을 바탕으로 일본 소비자 행동과 시장 특성을 분석하며, 고객 경험 개선과 비즈니스 성장에 기여하고자 합니다.</p>
+      </div>
+    </section>
+
+    <section id="strength">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">Personal PR</p>
+          <h2>Japan Business Capability</h2>
+        </div>
+
+        <div class="intro-grid">
+          <div class="card quote-card">
+            <span class="quote-mark left">“</span>
+            <span class="quote-mark right">”</span>
+            <p>안녕하세요. 일본 시장과 소비자 데이터를 기반으로 성장 기회를 발견하고 문제를 해결하는 지원자 김선우입니다. 일본 현지 근무 경험과 프로젝트 운영 경험을 통해 고객 응대, 일정 관리, 데이터 분석 및 이해관계자 협업 역량을 쌓아왔습니다. 또한 AI와 데이터 툴을 활용하여 반복 업무를 효율화하고, 고객 관점에서 개선 포인트를 도출하는 데 관심을 가지고 있습니다. 앞으로는 일본 소비자와 브랜드를 연결하는 과정에서 데이터를 기반으로 의사결정을 지원하고, 고객 경험 향상과 비즈니스 성장에 기여하는 인재로 성장하고자 합니다.</p>
+          </div>
+          <div class="card context-card">
+            <p class="label">Context</p>
+            <div class="context-list">
+              <div><small>NAME</small>김선우</div>
+              <div><small>LOCATION</small>경기도 광명시</div>
+              <div><small>EMAIL</small>sunwoo1global@gmail.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-grid">
+          <div class="card skill-card"><div class="icon">JP</div><h3>일본 시장 이해</h3><p>일본 현지 근무 경험을 통해 일본 소비자의 기대 수준과 서비스 이용 특성을 이해하고 있습니다.</p></div>
+          <div class="card skill-card"><div class="icon">文</div><h3>비즈니스 일본어</h3><p>일본어 기반의 커뮤니케이션 및 문서 업무 수행 경험을 보유하고 있습니다.</p></div>
+          <div class="card skill-card"><div class="icon">PM</div><h3>프로젝트 관리</h3><p>다수의 일정과 이해관계자를 조율하며 안정적인 업무 진행을 지원한 경험이 있습니다.</p></div>
+          <div class="card skill-card"><div class="icon">CX</div><h3>고객 인사이트 분석</h3><p>고객 리뷰와 운영 데이터를 분석하여 문제 원인을 파악하고 개선 방향을 도출했습니다.</p></div>
+          <div class="card skill-card"><div class="icon">↔</div><h3>파트너사 협업</h3><p>내부 담당자와 외부 파트너 사이에서 필요한 정보를 조율하며 원활한 협업을 지원했습니다.</p></div>
+          <div class="card skill-card"><div class="icon">Σ</div><h3>데이터 기반 문제 해결</h3><p>정량·정성 데이터를 기반으로 문제를 분석하고 개선안을 제안한 경험이 있습니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-white">
+      <div class="container experience-grid">
+        <div class="section-title">
+          <p class="eyebrow">Experience</p>
+          <h2>시장과 고객을 이해하고,<br />데이터로 개선점을 찾습니다.</h2>
+        </div>
+        <div class="metric-list">
+          <div class="metric">
+            <div><strong>700+</strong><h3>월간 일정 관리 경험</h3></div>
+            <p>프로젝트 매니저로서 다수의 일정과 인력을 관리하며 실시간 변동사항을 정리했습니다.</p>
+          </div>
+          <div class="metric">
+            <div><strong>JP</strong><h3>일본 현지 근무 경험</h3></div>
+            <p>일본 고객과 직접 소통하며 현지 서비스 기준과 커뮤니케이션 방식을 체득했습니다.</p>
+          </div>
+          <div class="metric">
+            <div><strong>70%</strong><h3>부정 리뷰 감소 및 사용자 경험 개선</h3></div>
+            <p>고객 리뷰 및 운영 데이터를 기반으로 문제 원인을 분석하고 운영 프로세스를 개선하여 부정 리뷰 약 70% 감소 및 Agoda Customer Review Award 달성에 기여했습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insight">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">Japan Market Insight</p>
+          <h2>Understanding Japanese Consumers<br />& Commerce Trends</h2>
+        </div>
+        <div class="insight-grid">
+          <div class="card insight-card">
+            <div class="icon">01</div>
+            <h3>일본 소비자 특징</h3>
+            <ul>
+              <li>상품 구매 전 리뷰와 평점을 중요하게 확인</li>
+              <li>브랜드 신뢰도와 실제 사용자 경험을 중시</li>
+              <li>상세한 상품 정보와 이미지 선호</li>
+              <li>재구매와 장기적인 브랜드 관계를 중요하게 생각</li>
+            </ul>
+          </div>
+          <div class="card insight-card">
+            <div class="icon">02</div>
+            <h3>일본 커머스 트렌드</h3>
+            <ul>
+              <li>SNS 기반의 소비자 의사결정 증가</li>
+              <li>리뷰 및 사용자 경험 중심의 구매 문화 정착</li>
+              <li>개인 맞춤형 상품 추천 서비스 선호</li>
+              <li>K-콘텐츠를 통한 한국 브랜드 관심 확대</li>
+              <li>브랜드 가치와 신뢰성을 고려한 구매 경향 강화</li>
+            </ul>
+          </div>
+          <div class="card insight-card">
+            <div class="icon">03</div>
+            <h3>Data Driven Approach</h3>
+            <p>고객 리뷰, 검색 데이터, 시장 트렌드를 분석하여 일본 소비자가 원하는 상품과 경험을 파악하고, 이를 바탕으로 성장 기회를 발견하는 것에 관심을 가지고 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-white">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">Projects</p>
+          <h2>Project Experience</h2>
+        </div>
+        <div class="project-list">
+          <article class="card project-card">
+            <div><div class="project-no">01</div><div class="project-label">PROJECT</div></div>
+            <div>
+              <div class="project-head"><h3>고객 리뷰 데이터 기반 고객 경험 개선<span class="company">CANDEO HOTELS KYOTO KARASUMA ROKKAKU</span></h3><span class="badge">기여도 75%</span></div>
+              <div class="project-cols">
+                <div><h4>PROBLEM</h4><p>고객 리뷰와 현장 인터뷰를 통해 시설 이용 방법, 체크인 안내 시간, 부대시설 정보에 대한 불편이 반복적으로 확인되었습니다.</p></div>
+                <div><h4>ACTION</h4><p>고객 리뷰와 현장 인터뷰 내용을 분석하고, 예약 사이트에 등록된 정보와 실제 시설 안내지를 비교 검토했습니다. 그 결과 예약 사이트별 안내 내용과 시설 안내지의 정보가 일치하지 않아 고객 안내 시간이 길어지고 있다는 점을 확인했습니다. 이에 반복적으로 발생하는 문의 항목을 정리하여 예약 사이트와 시설 안내지의 정보를 통일화했습니다. 또한 경쟁 호텔 사례를 참고하여 텍스트 중심의 안내지를 이미지와 아이콘 중심으로 시각화함으로써, 고객이 쉽고 빠르게 정보를 이해할 수 있도록 개선했습니다.</p></div>
+                <div><h4>RESULT</h4><p>체크인 안내 시간이 15분에서 5분으로 단축되었고, 고객 안내 방식이 명확해지면서 반복 문의와 부정 리뷰가 감소했습니다. 그 결과 고객 만족도 개선 및 2024년 AGODA 고객 리뷰 어워드 달성에 기여했습니다.</p></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div><div class="project-no">02</div><div class="project-label">PROJECT</div></div>
+            <div>
+              <div class="project-head"><h3>데이터 분석 기반 문제 원인 도출<span class="company">CANDEO HOTELS KYOTO KARASUMA ROKKAKU</span></h3><span class="badge">기여도 80%</span></div>
+              <div class="project-cols">
+                <div><h4>PROBLEM</h4><p>간사이 지역 정기회의에서 리넨 세탁비가 전월 대비 급격히 증가한 것을 확인했으나, 현장에서는 정확한 원인을 파악하지 못하고 있었습니다.</p></div>
+                <div><h4>ACTION</h4><p>정기회의에서 공유된 운영 데이터를 검토하고, 객실 이용 현황과 고객 요청 내역을 분석했습니다. 그 결과 유럽 가족 단위 고객 비중이 증가하면서 수건 추가 요청과 객실 전체 청소 요청이 평소보다 많이 발생했다는 점을 확인했습니다. 이후 해당 내용을 정리하여 본사에 공유하고 향후 운영 계획 수립에 참고할 수 있도록 보고했습니다.</p></div>
+                <div><h4>RESULT</h4><p>리넨 세탁비 증가의 원인을 고객 이용 패턴과 운영 데이터를 기반으로 분석하여 본사에 보고했습니다. 이를 통해 단순 비용 증가가 아닌 고객 구성 변화에 따른 현상임을 설명하고, 운영 현황을 보다 정확하게 판단할 수 있도록 지원했습니다.</p></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div><div class="project-no">03</div><div class="project-label">PROJECT</div></div>
+            <div>
+              <div class="project-head"><h3>이해관계자 협업 및 프로젝트 관리<span class="company">(주) 파이오컴</span></h3><span class="badge">기여도 90%</span></div>
+              <div class="project-cols">
+                <div><h4>PROBLEM</h4><p>월 700건 이상의 통역 프로젝트가 진행되는 환경에서 일정 변경, 긴급 요청, 회의 방식 변경 등이 수시로 발생하여 운영 혼선 가능성이 있었습니다.</p></div>
+                <div><h4>ACTION</h4><p>프로젝트별 일정, 통역사 배정 현황, 회의 자료, 변경 요청사항을 엑셀로 관리했습니다. 또한 일정 변경이나 ZOOM 접속 오류 등 돌발 상황 발생 시 통역사와 관계자에게 즉시 공유하고, 필요한 정보를 조율하며 프로젝트가 원활하게 진행될 수 있도록 지원했습니다.</p></div>
+                <div><h4>RESULT</h4><p>다수 프로젝트가 동시에 진행되는 상황에서도 일정 누락과 정보 전달 오류를 최소화하고, 안정적인 프로젝트 운영 환경 구축에 기여했습니다.</p></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div><div class="project-no">04</div><div class="project-label">PROJECT</div></div>
+            <div>
+              <div class="project-head"><h3>데이터 기반 업무 프로세스 개선<span class="company">SANKO AIR CONDITIONING CO. LTD</span></h3><span class="badge">기여도 75%</span></div>
+              <div class="project-cols">
+                <div><h4>PROBLEM</h4><p>1년 5개월간의 현장 공정 진행 이력이 체계적으로 관리되지 않아, 팀장이 전체 프로젝트 진행 현황을 한눈에 파악하기 어려운 상황이 있었습니다.</p></div>
+                <div><h4>ACTION</h4><p>시공계획서와 파편화되어 있던 공정 데이터를 엑셀로 정리하고, CAD 도면과 실제 현장 데이터를 비교하며 작업 진행 현황을 기록했습니다. 또한 문서화한 자료를 공정별·구역별로 구분하여 관리함으로써 필요한 정보를 빠르게 확인할 수 있도록 체계를 구축했습니다.</p></div>
+                <div><h4>RESULT</h4><p>공정 진행 현황과 운영 데이터를 체계적으로 정리하여, 팀장이 프로젝트 진행 상황을 빠르게 확인하고 의사결정을 할 수 있도록 지원했습니다.</p></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contribution">
+      <div class="container">
+        <p class="eyebrow">Contribution Direction</p>
+        <h2>입사 후 기여 방향</h2>
+        <div class="short-line"></div>
+        <p class="body">입사 후에는 일본 시장과 소비자 특성을 빠르게 이해하고, 고객 데이터와 시장 트렌드를 기반으로 성장 기회를 발굴하겠습니다. 또한 유관 부서 및 파트너사와 적극적으로 협업하며 고객 경험 개선과 안정적인 비즈니스 운영에 기여하겠습니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>Designed &amp; Built by 김선우</strong>
+      <p>Japan Market Growth Portfolio · Marketing · Consumer Insight · Business Operations</p>
+    </div>
+  </footer>
+</body>
+</html>
