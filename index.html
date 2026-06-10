@@ -122,6 +122,7 @@
       line-height: 1.16;
       letter-spacing: -0.055em;
       font-weight: 780;
+      word-break: keep-all;
     }
     .hero p {
       max-width: 800px;
@@ -192,10 +193,14 @@
       line-height: 2;
     }
     .context-card {
-      height: fit-content;
+      height: 100%;
+      min-height: 320px;
       border-color: var(--line-dark);
       box-shadow: none;
-      padding: 20px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .context-card .label {
       margin: 0 0 20px;
@@ -427,6 +432,7 @@
     <div class="container header-inner">
       <a href="#" class="brand"><span class="dot"></span><span>SUNWOO KIM • Portfolio</span></a>
       <nav class="nav">
+        <a href="#context">Context</a>
         <a href="#strength">Capability</a>
         <a href="#experience">Experience</a>
         <a href="#insight">Market Insight</a>
@@ -443,12 +449,12 @@
           <span class="chip">Japan Market</span>
           <span class="chip">Consumer Insight</span>
         </div>
-        <h1>일본 시장의 고객 경험과 데이터를 연결하여,<br />성장 기회를 발견하는 지원자<br />김선우입니다.</h1>
-        <p>일본 현지 근무 경험과 데이터 기반 문제 해결 역량을 바탕으로 일본 소비자 행동과 시장 특성을 분석하며, 고객 경험 개선과 비즈니스 성장에 기여하고자 합니다.</p>
+        <h1>일본 시장의 고객 경험과 데이터를 연결하여,<br />성장 기회를 발견하는 지원자 김선우입니다.</h1>
+        <p>일본 현지 근무 경험과 데이터 기반 문제 해결 역량을 바탕으로 일본 소비자 행동과 시장 특성을 분석하며,<br />고객 경험 개선과 비즈니스 성장에 기여하고자 합니다.</p>
       </div>
     </section>
 
-    <section id="strength">
+    <section id="context">
       <div class="container">
         <div class="section-title">
           <p class="eyebrow">Personal PR</p>
@@ -467,11 +473,12 @@
               <div><small>NAME</small>김선우</div>
               <div><small>LOCATION</small>경기도 광명시</div>
               <div><small>EMAIL</small>sunwoo1global@gmail.com</div>
+              <div><small>LANGUAGE</small>Korean · Japanese · English</div>
             </div>
           </div>
         </div>
 
-        <div class="skill-grid">
+        <div id="strength" class="skill-grid">
           <div class="card skill-card"><div class="icon">JP</div><h3>일본 시장 이해</h3><p>일본 현지 근무 경험을 통해 일본 소비자의 기대 수준과 서비스 이용 특성을 이해하고 있습니다.</p></div>
           <div class="card skill-card"><div class="icon">文</div><h3>비즈니스 일본어</h3><p>일본어 기반의 커뮤니케이션 및 문서 업무 수행 경험을 보유하고 있습니다.</p></div>
           <div class="card skill-card"><div class="icon">PM</div><h3>프로젝트 관리</h3><p>다수의 일정과 이해관계자를 조율하며 안정적인 업무 진행을 지원한 경험이 있습니다.</p></div>
